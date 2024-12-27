@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Ticket Viewer</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 320px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-right: 2px solid #dee2e6;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+        .sidebar h2 {
+            margin: 10px 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+            font-size: 16px;
+            color: #495057;
+        }
+        .sidebar ul li:hover {
+            background-color: #e9ecef;
+            transform: translateY(-3px);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 8px solid #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .modal img:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Diciembre</h2>
+        <ul>
+            <li onclick="showImage('ticket1.jpg')">Martes 15 <strong>Ganada</strong> - Cuota 1.65</li>
+            <li onclick="showImage('ticket2.jpg')">Lunes 14 <strong>Ganada</strong> - Cuota 1.54</li>
+            <li onclick="showImage('ticket3.jpg')">Viernes 11 <strong>Ganada</strong> - Cuota 1.89</li>
+            <li onclick="showImage('ticket4.jpg')">Viernes 11 <strong>Perdida</strong></li>
+            <li onclick="showImage('ticket5.jpg')">Miércoles 08 <strong>Ganada</strong> - Cuota 3.67</li>
+        </ul>
+        <h2>Noviembre</h2>
+        <ul>
+            <li onclick="showImage('ticket6.jpg')">Lunes 28 <strong>Ganada</strong> - Cuota 1.65</li>
+        </ul>
+    </div>
+
+    <div class="modal" id="imageModal" onclick="hideImage()">
+        <img id="modalImage" src="" alt="Ticket">
+    </div>
+
+    <script>
+        function showImage(imageName) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = '/tickets/' + imageName;
+            modal.style.display = 'flex';
+        }
+
+        function hideImage() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
